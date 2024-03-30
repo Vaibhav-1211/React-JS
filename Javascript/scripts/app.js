@@ -139,7 +139,7 @@
 //   name: " Roman",
 //   age: 40
 // }
-// console.log(userName);
+// console.log(userName,age);
 // console.log(age);
 
 // //Spread op
@@ -214,3 +214,5 @@
 // const hobbies = ["Sports","Cooking"]
 // hobbies.push("KOOK")
 // console.log(hobbies);
+
+
