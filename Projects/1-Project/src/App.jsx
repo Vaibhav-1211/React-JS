@@ -6,7 +6,14 @@ import { CORE_CONCEPTS } from './data.js';
 
 
 function App() {
+  function handleSelect(SelectedButton) {
+    // selectedButton => 'components','jsx','props','state'
+    //Now we get our cutome indentifier and custom parameter
+    console.log(SelectedButton);
+  }
+
   return (
+
     <div>
       <Header />
       <main>
@@ -30,8 +37,14 @@ function App() {
             {/* your components wrap other components or contents is called component composition */}
             {/* we can also use label  */}
             {/* <TabButtons label="Components" /> */}
-            <TabButtons>Components</TabButtons>
+            {/* Passing a function as values to the onSelect prop */}
+            <TabButtons onSelect={() => handleSelect("Component")}>Components</TabButtons>
+            <TabButtons onSelect={() =>handleSelect("JSX")}>JSX</TabButtons>
+            <TabButtons onSelect={() =>handleSelect("Props")}>Props</TabButtons>
+            <TabButtons onSelect={() =>handleSelect("State")}>State</TabButtons>
+            {/* Children prop approch */}
           </menu>
+          Dyanamic Content
         </section>
       </main>
     </div>
