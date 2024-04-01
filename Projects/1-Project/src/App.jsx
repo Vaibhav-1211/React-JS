@@ -7,7 +7,7 @@ import { useState } from 'react';
 import CoreConcept from './CoreConcept/CoreConcepts.jsx';
 import Header from './Header/Header.jsx';
 import TabButtons from './TabButton/TabButtons.jsx';
-import {CORE_CONCEPTS, EXAMPLES } from './data.js';
+import { CORE_CONCEPTS, EXAMPLES } from './data.js';
 
 
 
@@ -20,7 +20,7 @@ function App() {
   //setSelectedTopic function is update fn which tell that this function should be executed again.
   //selectedTopic - with const i used which will recreate everytime when the funcition will execute. So we don't neeed a variable here.BTS react will store and update the actual value which will then pass to this const.
 
-  const [selectedTopic, setSelectedTopic] = useState('components');
+  const [selectedTopic, setSelectedTopic] = useState();
 
   // let tabContent = "Please click the button"
 
@@ -31,6 +31,24 @@ function App() {
     setSelectedTopic(SelectedButton)
     // console.log(selectedTopic);
   }
+
+  //Conditional rendering (if condition and ternary condition)
+  // let tabContent = <p>Please select a topic.</p>;
+
+  // if (selectedTopic) {
+  //   tabContent = (
+  //     <div id='tab-content'>
+  //       <h3>{EXAMPLES[selectedTopic].title}</h3>
+  //       <p>{EXAMPLES[selectedTopic].description}</p>
+  //       <pre>
+  //         <code>
+  //           {EXAMPLES[selectedTopic].code}
+  //         </code>
+  //       </pre>
+  //     </div>
+  //   );
+  // }
+
   return (
 
     <div>
@@ -63,7 +81,10 @@ function App() {
             <TabButtons onSelect={() => handleSelect("state")}>State</TabButtons>
             {/* Children prop approch */}
           </menu>
-          <div id='tab-content'>
+          {/* {tabContent} */}
+          {/* !== shortform or truthy value ! before the text */}
+          {/* we can use ternary op with separeted dyanmic segments or combine them both in one like below and also we can use && op to get same behaviour in project */}
+          {!selectedTopic ? (<p>Please select a topic.</p>) : (<div id='tab-content'>
             <h3>{EXAMPLES[selectedTopic].title}</h3>
             <p>{EXAMPLES[selectedTopic].description}</p>
             <pre>
@@ -72,6 +93,10 @@ function App() {
               </code>
             </pre>
           </div>
+          )}
+
+
+
           {/* so this state snanpshot-so we can finally update the value */}
         </section>
       </main>
