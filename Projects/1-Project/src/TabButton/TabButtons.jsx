@@ -1,5 +1,5 @@
 const TabButtons = ({ children,onSelect }) => {
-
+console.log('TAB BUTTON COMPONENT EXECUTING');
   return (
     <div>
       <li>
