@@ -33,21 +33,21 @@ function App() {
   }
 
   //Conditional rendering (if condition and ternary condition)
-  // let tabContent = <p>Please select a topic.</p>;
+  let tabContent = <p>Please select a topic.</p>;
 
-  // if (selectedTopic) {
-  //   tabContent = (
-  //     <div id='tab-content'>
-  //       <h3>{EXAMPLES[selectedTopic].title}</h3>
-  //       <p>{EXAMPLES[selectedTopic].description}</p>
-  //       <pre>
-  //         <code>
-  //           {EXAMPLES[selectedTopic].code}
-  //         </code>
-  //       </pre>
-  //     </div>
-  //   );
-  // }
+  if (selectedTopic) {
+    tabContent = (
+      <div id='tab-content'>
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>
+            {EXAMPLES[selectedTopic].code}
+          </code>
+        </pre>
+      </div>
+    );
+  }
 
   return (
 
@@ -57,14 +57,9 @@ function App() {
         <section id='core-concepts'>
           <h2>Core Concepts</h2>
           <ul>
-            <CoreConcept
-              title={CORE_CONCEPTS[0].title}
-              description={CORE_CONCEPTS[0].description}
-              image={CORE_CONCEPTS[0].image} />
-            {/* <CoreConcept {...CORE_CONCEPTS[0]} /> */}
-            <CoreConcept {...CORE_CONCEPTS[1]} />
-            <CoreConcept {...CORE_CONCEPTS[2]} />
-            <CoreConcept {...CORE_CONCEPTS[3]} />
+            {/* map method produces the new array based on existing array -given list is generated dyanamically using map method - key prop is used by react under the hood to effeceitly  render and update the list */}
+            {CORE_CONCEPTS.map((conceptItem) => (<CoreConcept key={conceptItem.title} {...conceptItem} />
+            ))}
           </ul>
         </section>
         <section id='examples'>
@@ -75,16 +70,16 @@ function App() {
             {/* we can also use label  */}
             {/* <TabButtons label="Components" /> */}
             {/* Passing a function as values to the onSelect prop */}
-            <TabButtons onSelect={() => handleSelect("components")}>Components</TabButtons>
-            <TabButtons onSelect={() => handleSelect("jsx")}>JSX</TabButtons>
-            <TabButtons onSelect={() => handleSelect("props")}>Props</TabButtons>
-            <TabButtons onSelect={() => handleSelect("state")}>State</TabButtons>
+            <TabButtons isSelected={selectedTopic === 'components'} onSelect={() => handleSelect("components")}>Components</TabButtons>
+            <TabButtons isSelected={selectedTopic === 'jsx'} onSelect={() => handleSelect("jsx")}>JSX</TabButtons>
+            <TabButtons isSelected={selectedTopic === 'props'} onSelect={() => handleSelect("props")}>Props</TabButtons>
+            <TabButtons isSelected={selectedTopic === 'state'} onSelect={() => handleSelect("state")}>State</TabButtons>
             {/* Children prop approch */}
           </menu>
-          {/* {tabContent} */}
+          {tabContent}
           {/* !== shortform or truthy value ! before the text */}
           {/* we can use ternary op with separeted dyanmic segments or combine them both in one like below and also we can use && op to get same behaviour in project */}
-          {!selectedTopic ? (<p>Please select a topic.</p>) : (<div id='tab-content'>
+          {/* {!selectedTopic ? (<p>Please select a topic.</p>) : (<div id='tab-content'>
             <h3>{EXAMPLES[selectedTopic].title}</h3>
             <p>{EXAMPLES[selectedTopic].description}</p>
             <pre>
@@ -93,7 +88,7 @@ function App() {
               </code>
             </pre>
           </div>
-          )}
+          )} */}
 
 
 
