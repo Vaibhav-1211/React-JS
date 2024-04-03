@@ -3,7 +3,6 @@ const TabButtons = ({ children, onSelect, isSelected }) => {
   return (
     <div>
       <li>
-        {/* function to the onClick prop */}
         <button className={isSelected ? 'active' : undefined} onClick={onSelect}>{children}</button>
       </li>
     </div>
