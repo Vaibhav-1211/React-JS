@@ -1,13 +1,19 @@
 import { useState } from "react";
 
 
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({ initialName, symbol, isActive, onChangeName }) {
 
   const [playerName, setPlayerName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {
-    setIsEditing((editing) => !editing) //it is good habit to use function form here for updating the state insted of below way to update the state
+    setIsEditing((editing) => !editing)
+
+    if(isEditing){
+      onChangeName(symbol, playerName)
+    }//we click the button to stop editing
+
+    //it is good habit to use function form here for updating the state insted of below way to update the state
     // setIsEditing(!isEditing); // => Schdule a state update true
   }
 
