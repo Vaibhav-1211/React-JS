@@ -11,3 +11,5 @@ Different ways to use CSS in React.
 -- Handling media quries, psudo selector : and nested rules in css selectors
 
 - By using & with white space we can handle the mediaquries as well as pseudo selectors.
+- 
+ 
