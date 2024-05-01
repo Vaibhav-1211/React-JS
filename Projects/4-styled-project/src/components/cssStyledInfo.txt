@@ -1,0 +1,13 @@
+Different ways to use CSS in React.
+- Using className as selector
+- Using id # selector
+- Using above selector dynamically and conditionally to show css effect like ternary oprator
+- Using CSS modules to use css and other framework along with It like bootstrap. ->It creates uniq css classnames
+- CSS Styled module package :- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates
+- It creates uniq css classnames like css modules
+- We can build wrapper components with help of style components
+- Using built in names give warning while passing props into styled coponents
+
+-- Handling media quries, psudo selector : and nested rules in css selectors
+
+- By using & with white space we can handle the mediaquries as well as pseudo selectors.
