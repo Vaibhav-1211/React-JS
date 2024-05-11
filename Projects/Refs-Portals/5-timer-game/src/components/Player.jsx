@@ -4,12 +4,12 @@ import { useRef, useState } from "react";
 export default function Player() {
   const playerName = useRef();
   const [enteredPlayerName, setEnteredPlayerName] = useState(null);
-  // const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  // function handleChange(event) {
-  //   setSubmitted(false);
-  //   setEnteredPlayerName(event.target.value)
-  // }
+  function handleChange(event) {
+    setSubmitted(false);
+    setEnteredPlayerName(event.target.value)
+  }
 
   function handleClick() {
     setEnteredPlayerName(playerName.current.value);
@@ -21,7 +21,7 @@ export default function Player() {
       <h2>Welcome {enteredPlayerName ?? 'unknown entity'}</h2>
       {/* {enteredPlayerName ? enteredPlayerName : 'unknown entity'} */}
       <p>
-        <input gitref={playerName} type="text" />
+        <input ref={playerName} type="text" />
         <button onClick={handleClick}>Set Name</button>
       </p>
     </section>
