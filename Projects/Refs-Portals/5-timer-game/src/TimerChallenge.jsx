@@ -6,21 +6,20 @@ import ResultModal from "./components/ResultModal.jsx";
 export default function TimerChallenge({ title, targetTime }) {
   const timer = useRef();
   const dialog = useRef();
+  const [timeRemaining, setTimeRemaining] = useState(targetTime * 1000);
   // const [timerStarted, setTimerStarted] = useState(false);
   // const [timerExpired, setTimerExpired] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(targetTime * 1000);
 
   const timerIsActive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
 
   if (timeRemaining <= 0) {
     clearInterval(timer.current);
-    setTimeRemaining(targetTime * 1000);
+    // setTimeRemaining(targetTime * 1000);
     dialog.current.open();
   }//we loss because timer is expires because we did not stop
 
   function handleStart() {
-
-    timer.current = setTimeout(() => {
+    timer.current = setInterval(() => {
       setTimeRemaining(prevTimeRemaining => prevTimeRemaining - 10);
       // setTimerExpired(true);
       // dialog.current.open();
@@ -30,16 +29,19 @@ export default function TimerChallenge({ title, targetTime }) {
 
   }//setting a timer
 
+  function handleReset() {
+    setTimeRemaining(targetTime * 1000);
+  }
 
   function handleStop() {
-    clearTimeout(timer.current);
     dialog.current.open()
+    clearTimeout(timer.current);
   }
 
 
   return (
     <>
-      <ResultModal ref={dialog} targetTime={targetTime} result='lost' remainingTime={timeRemaining} />
+      <ResultModal ref={dialog} targetTime={targetTime}  remainingTime={timeRemaining} onReset={handleReset} />
       <section className="challenge">
         <h2>{title}</h2>
         {/* {timerExpired && <p>You lost!</p>} */}
